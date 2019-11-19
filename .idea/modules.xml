@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Tele_BOT.iml" filepath="$PROJECT_DIR$/Tele_BOT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TelegramBot.iml" filepath="$PROJECT_DIR$/TelegramBot.iml" />
     </modules>
   </component>
 </project>
