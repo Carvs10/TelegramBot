@@ -18,7 +18,6 @@ public class Bem
 		this.categoria 		= categoria;
 	}
 
-	// Acessores
 	String getNome() {
 		return this.Nome;
 	}

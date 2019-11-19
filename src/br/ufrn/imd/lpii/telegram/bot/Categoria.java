@@ -1,6 +1,5 @@
 package br.ufrn.imd.lpii.telegram.bot;
 
-// Categoria do bem
 public class Categoria
 {
 	String Nome;
@@ -13,7 +12,6 @@ public class Categoria
 		this.Codigo    = Codigo;
 	}
 
-	// Acessores
 	String getNome() {
 		return this.Nome;
 	}

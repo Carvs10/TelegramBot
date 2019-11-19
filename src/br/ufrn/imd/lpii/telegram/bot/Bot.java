@@ -25,24 +25,10 @@ class Bot {
     @SuppressWarnings("unused")
     private Localizacao localizacao;
 
-    /**
-     * Construtor da classe.
-     *
-     * Declara um objeto da classe bot para a utilização das funções da API do telegram
-     *
-     * @param token Token criado e coletado no BotFather que faz parte da API do telegram, que serve para criar e comunicar-se com o bot
-     *
-     *
-     */
+
     // Criação do objeto bot
     Bot(String token){ Bot.bot = TelegramBotAdapter.build(token); }
 
-    /**
-     *  A função não recebe nenhum parâmetro, ela serve simplesmente para iniciar o loop da coleta de mensagens para
-     *  assim iniciar as funconalidades do código
-     *
-     *
-     */
     void inicarBot(){
         // objeto responsável por receber as mensagens
         GetUpdatesResponse updatesResponse;
@@ -65,17 +51,15 @@ class Bot {
                 new Thread();
                 Thread.sleep(500);
 
-                // executa comando no Telegram para obter as mensagens pendentes a partir de um off-set (limite inicial)
                 updatesResponse = bot.execute(new GetUpdates().limit(100).offset(limiteInicial));
 
-                // lista de mensagens
+
                 List<Update> updates = updatesResponse.updates();
 
-                // análise de cada ação da mensagem
+
                 if (updates != null) {
                     for (Update update : updates) {
 
-                        // atualização do off-set
                         limiteInicial = update.updateId() + 1;
 
                         System.out.println("Recebendo mensagem:" + update.message().text());
@@ -478,55 +462,4 @@ class Bot {
         Bem bem = new Bem();
         return bem;
     }
-
-//    private void movimentarBem(Long idChat, int limiteInicial){
-//
-//        Bem bem = buscarBem(idChat, limiteInicial);
-//
-//        // objeto responsável por receber as mensagens
-//        GetUpdatesResponse updatesResponse;
-//
-//        // objeto responsável por gerenciar o envio de respostas
-//        SendResponse sendResponse;
-//
-//        // objeto responsável por gerenciar o envio de ações do chat
-//        BaseResponse baseResponse;
-//
-//        String entradaDoUsuario = "";
-//        boolean controle = true;
-//
-//        bot.execute(new SendMessage(idChat, "Insira a nova localização do bem"));
-//        while(controle){
-//            System.out.println("Entrou no While de movimentar bens");
-//            try{
-//                // executa comando no Telegram para obter as mensagens pendentes a partir de um off-set (limite inicial)
-//                updatesResponse = bot.execute(new GetUpdates().limit(100).offset(limiteInicial));
-//
-//                // lista de mensagens
-//                List<Update> updates = updatesResponse.updates();
-//                if(updates != null){
-//                    for (Update update : updates){
-//                        limiteInicial = update.updateId()+1;
-//                        entradaDoUsuario = update.message().text();
-//                        controle = false;
-//                        continue;
-//                    }
-//                }
-//            } catch (RuntimeException e){
-//                bot.execute(new SendChatAction(idChat, ChatAction.typing.name()));
-//                bot.execute(new SendMessage(idChat, "Chat encerrado devido a inatividade"));
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        System.out.println("Saiu do while de movimentar");
-//
-//        System.out.println(entradaDoUsuario);
-//
-//        bem.setLocalizacao(entradaDoUsuario);
-//
-//        armazenarEmArquivoJson(bem, "ListaDeBens.json");
-//
-//        bot.execute(new SendMessage(idChat, "Movimentação feita com sucesso"));
-//    }
 }

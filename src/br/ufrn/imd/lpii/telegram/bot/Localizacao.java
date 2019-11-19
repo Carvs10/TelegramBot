@@ -1,8 +1,6 @@
 package br.ufrn.imd.lpii.telegram.bot;
 
-/**
- *
- */
+
 class Localizacao
 {
 	String Nome;
@@ -13,7 +11,6 @@ class Localizacao
 		this.Descricao = Descricao;
 	}
 
-	// Acessores
 	String getNome() {
 		return this.Nome;
 	}
